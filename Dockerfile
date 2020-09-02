@@ -2,10 +2,10 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY ./package*json ./
-VOLUME node_modules
-RUN npm install
+ARG OUTPUT_PATH
+RUN npm install -g tiktok-scraper && \
+    mkdir $OUTPUT_PATH
 
-COPY . .
+COPY scrape.sh .
 
-CMD ["node", "index.js"]
+CMD [ "./scrape.sh" ]

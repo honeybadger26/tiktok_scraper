@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    scraper:
+        build: 
+            context: .
+            args: 
+                OUTPUT_PATH: ${OUTPUT_PATH}
+        env_file: .env
+        volumes: 
+            - ./${OUTPUT_PATH}:/usr/src/app/${OUTPUT_PATH}

@@ -3,17 +3,17 @@ Scraper for Black Lives Matter posts.
 Uses: https://github.com/drawrowfly/tiktok-scraper
 
 # Instructions
-First you will need to create a folder titled `out` in this directory
-## Locally
-- Install node
-- Run: `npm install && node index.js`
+First you will need to create a folder titled `out` in this directory where all output files will be stored
+
+## UNIX
+- Install **node**
+- Install **tiktok-scraper**: `npm install -g tiktok-scraper`
+- Run: `./scrape.sh`
 
 ## Docker
-### Windows
 ```
-docker build -t tiktok_scraper . && docker run -it --rm -v %cd%\out:/usr/src/app/out tiktok_scraper
+docker-compose up --build
 ```
-### UNIX
-```
-docker build -t tiktok_scraper . && docker run -it --rm -v `pwd`\out:/usr/src/app/out tiktok_scraper
-```
+
+# Notes
+- Combining CSVs and removing duplicate rows: `awk '(NR == 1) || (FNR > 1)' *.csv | awk '!v[$1]++' > combined.csv`
