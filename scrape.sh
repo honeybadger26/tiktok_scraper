@@ -1,10 +1,17 @@
 #!/bin/sh
 
-ARGS="-d --hd -w -n $NUM_FILES --filepath $OUTPUT_PATH -t csv -s --historypath $OUTPUT_PATH"
+ARGS="-n $NUM_POSTS --filepath $OUTPUT_PATH -t csv --historypath $OUTPUT_PATH"
 
 set -x
 
-for HASHTAG in "blacklivesmatter" "blm"
-do
+# Read from file and scrape
+dos2unix < hashtags.txt |
+while IFS= read HASHTAG; do
     tiktok-scraper hashtag $HASHTAG $ARGS
 done
+
+# Combine csv files 
+# FIXME
+# cd $OUTPUT_PATH
+# rm combined.csv
+# awk '(NR == 1) || (FNR > 1)' *.csv | awk '!v[$1]++' > combined.csv

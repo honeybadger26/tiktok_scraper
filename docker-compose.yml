@@ -2,10 +2,9 @@ version: '3'
 
 services:
     scraper:
-        build: 
-            context: .
-            args: 
-                OUTPUT_PATH: ${OUTPUT_PATH}
-        env_file: .env
+        build: .
+        environment: 
+            - OUTPUT_PATH=out
+            - NUM_POSTS=3000
         volumes: 
-            - ./${OUTPUT_PATH}:/usr/src/app/${OUTPUT_PATH}
+            - ./out:/usr/src/app/out
