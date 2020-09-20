@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 RUN npm install -g tiktok-scraper
 
 COPY . .
-RUN chmod +x scrape.sh
+RUN sed -i 's/\r$//' scrape.sh  && \  
+    chmod +x scrape.sh
 
 CMD [ "./scrape.sh" ]
