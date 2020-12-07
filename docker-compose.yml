@@ -5,6 +5,5 @@ services:
         build: .
         environment: 
             - OUTPUT_PATH=out
-            - NUM_POSTS=3000
         volumes: 
             - ./out:/usr/src/app/out
